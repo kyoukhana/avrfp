@@ -1,0 +1,94 @@
+#!/bin/sh
+
+set -eu
+
+project_dir=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
+runtime_dir="$project_dir/.runtime"
+pid_file="$runtime_dir/server.pid"
+log_file="$runtime_dir/server.log"
+host=${AVRFP_HOST:-127.0.0.1}
+port=${AVRFP_PORT:-8080}
+
+usage() {
+  echo "Usage: ./server {start|stop|restart|status|logs}"
+  echo "Optional: AVRFP_HOST=127.0.0.1 AVRFP_PORT=8080 ./server start"
+}
+
+running_pid() {
+  [ -f "$pid_file" ] || return 1
+  pid=$(cat "$pid_file")
+  case "$pid" in
+    ''|*[!0-9]*) return 1 ;;
+  esac
+  kill -0 "$pid" 2>/dev/null || return 1
+  echo "$pid"
+}
+
+start_server() {
+  if pid=$(running_pid); then
+    echo "AVRFP server is already running (PID $pid)."
+    echo "http://$host:$port"
+    return
+  fi
+
+  command -v php >/dev/null 2>&1 || {
+    echo "PHP is required but was not found." >&2
+    exit 1
+  }
+
+  mkdir -p "$runtime_dir"
+  rm -f "$pid_file"
+  : > "$log_file"
+  nohup php -S "$host:$port" -t "$project_dir" </dev/null >> "$log_file" 2>&1 &
+  pid=$!
+  echo "$pid" > "$pid_file"
+
+  sleep 1
+  if ! kill -0 "$pid" 2>/dev/null; then
+    rm -f "$pid_file"
+    echo "The server could not start. See $log_file" >&2
+    exit 1
+  fi
+
+  echo "AVRFP server started (PID $pid)."
+  echo "http://$host:$port"
+}
+
+stop_server() {
+  if ! pid=$(running_pid); then
+    rm -f "$pid_file"
+    echo "AVRFP server is not running."
+    return
+  fi
+
+  kill "$pid"
+  attempts=0
+  while kill -0 "$pid" 2>/dev/null && [ "$attempts" -lt 20 ]; do
+    sleep 0.1
+    attempts=$((attempts + 1))
+  done
+  rm -f "$pid_file"
+  echo "AVRFP server stopped."
+}
+
+server_status() {
+  if pid=$(running_pid); then
+    echo "AVRFP server is running (PID $pid)."
+    echo "http://$host:$port"
+  else
+    rm -f "$pid_file"
+    echo "AVRFP server is not running."
+    exit 1
+  fi
+}
+
+case "${1:-}" in
+  start) start_server ;;
+  stop) stop_server ;;
+  restart) stop_server; start_server ;;
+  status) server_status ;;
+  logs)
+    [ -f "$log_file" ] && tail -n 50 "$log_file" || echo "No server log exists yet."
+    ;;
+  *) usage; exit 1 ;;
+esac

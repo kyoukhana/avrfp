@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 700" role="img" aria-labelledby="title desc">
+  <title id="title">Event planner hero placeholder</title>
+  <desc id="desc">Abstract conference venue with a professional at a laptop under purple and blue lights.</desc>
+  <defs>
+    <linearGradient id="venue" x1="0" x2="1" y1="1" y2="0"><stop stop-color="#11122c"/><stop offset=".5" stop-color="#30127e"/><stop offset="1" stop-color="#0e55c8"/></linearGradient>
+    <linearGradient id="stage" x1="0" x2="1"><stop stop-color="#5214df"/><stop offset="1" stop-color="#2148dc"/></linearGradient>
+    <filter id="blur"><feGaussianBlur stdDeviation="18"/></filter>
+  </defs>
+  <rect width="960" height="700" fill="url(#venue)"/>
+  <g opacity=".55" filter="url(#blur)" fill="#673cff"><circle cx="160" cy="80" r="90"/><circle cx="660" cy="100" r="110"/><circle cx="860" cy="310" r="120"/></g>
+  <path fill="#101327" d="M0 480h960v220H0z"/>
+  <g opacity=".55" fill="#d7dbff"><ellipse cx="130" cy="500" rx="105" ry="32"/><ellipse cx="490" cy="520" rx="120" ry="36"/><ellipse cx="810" cy="490" rx="110" ry="34"/></g>
+  <rect x="540" y="85" width="330" height="220" rx="5" fill="url(#stage)" stroke="#968cff" stroke-width="5"/>
+  <text x="705" y="158" fill="white" font-family="Arial, sans-serif" font-size="31" font-weight="700" text-anchor="middle"><tspan x="705">GREAT EVENTS</tspan><tspan x="705" dy="43">BRING PEOPLE</tspan><tspan x="705" dy="43">TOGETHER.</tspan></text>
+  <g transform="translate(200 105)"><circle cx="170" cy="92" r="64" fill="#2b1a1a"/><path fill="#13141c" d="M83 209c21-58 153-74 190 3l68 383H15z"/><path fill="#b97961" d="M153 138h42v55h-42z"/><circle cx="171" cy="103" r="53" fill="#b97961"/><path fill="#291918" d="M120 95c0-78 105-90 112-16-32-8-59-1-82 22z"/><path fill="#202236" d="m175 353 236 42-55 171-236-43z"/><rect x="194" y="377" width="182" height="119" rx="5" fill="#080b18"/><text x="285" y="450" fill="#7135ef" font-family="Arial, sans-serif" font-size="36" font-style="italic" font-weight="700" text-anchor="middle">AVRFP</text></g>
+  <text x="924" y="674" fill="#fff" opacity=".55" font-family="Arial, sans-serif" font-size="14" text-anchor="end">PLACEHOLDER IMAGE</text>
+</svg>

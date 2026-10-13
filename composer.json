@@ -1,0 +1,9 @@
+{
+    "name": "avrfp/website",
+    "description": "The AVRFP public website.",
+    "type": "project",
+    "license": "proprietary",
+    "require": {
+        "league/commonmark": "^2.7"
+    }
+}

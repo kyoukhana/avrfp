@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 420" role="img" aria-labelledby="title desc">
+  <title id="title">Event testimonial background placeholder</title>
+  <desc id="desc">Abstract audience facing a purple-lit event stage.</desc>
+  <defs><linearGradient id="bg" x1="0" x2="1"><stop stop-color="#030817"/><stop offset=".55" stop-color="#19115d"/><stop offset="1" stop-color="#4a12d1"/></linearGradient><filter id="glow"><feGaussianBlur stdDeviation="22"/></filter></defs>
+  <rect width="1400" height="420" fill="url(#bg)"/>
+  <g opacity=".65" filter="url(#glow)" fill="#7040ff"><circle cx="760" cy="80" r="90"/><circle cx="1030" cy="110" r="115"/><circle cx="1230" cy="70" r="65"/></g>
+  <g stroke="#9a78ff" stroke-width="9" opacity=".7"><path d="M760 0l70 300M940 0l-10 290M1110 0l-95 300M1260 0l-160 305"/></g>
+  <g fill="#080b1c"><circle cx="670" cy="330" r="50"/><circle cx="780" cy="350" r="58"/><circle cx="910" cy="330" r="46"/><circle cx="1040" cy="355" r="62"/><circle cx="1170" cy="338" r="52"/><circle cx="1310" cy="360" r="66"/><path d="M600 420q70-135 140 0M705 420q75-145 150 0M840 420q70-130 140 0M965 420q80-155 160 0M1095 420q75-145 150 0M1220 420q80-160 160 0"/></g>
+  <text x="1370" y="395" fill="#fff" opacity=".45" font-family="Arial, sans-serif" font-size="14" text-anchor="end">PLACEHOLDER IMAGE</text>
+</svg>
